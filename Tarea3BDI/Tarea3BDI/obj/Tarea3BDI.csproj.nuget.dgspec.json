@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj": {}
+    "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\RepoTarea3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj": {
+    "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\RepoTarea3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\RepoTarea3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj",
         "projectName": "Tarea3BDI",
-        "projectPath": "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj",
+        "projectPath": "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\RepoTarea3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\RepoTarea3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
