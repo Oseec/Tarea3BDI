@@ -1,0 +1,8 @@
+C:\Users\Usuario\Desktop\TEC\Semestre_4\BD1\RepoTarea3\Tarea3BDI\Tarea3BDI\Tarea3BDI\obj\Debug\net6.0\Tarea3BDI.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\TEC\Semestre_4\BD1\RepoTarea3\Tarea3BDI\Tarea3BDI\Tarea3BDI\obj\Debug\net6.0\Tarea3BDI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\Desktop\TEC\Semestre_4\BD1\RepoTarea3\Tarea3BDI\Tarea3BDI\Tarea3BDI\obj\Debug\net6.0\Tarea3BDI.AssemblyInfoInputs.cache
+C:\Users\Usuario\Desktop\TEC\Semestre_4\BD1\RepoTarea3\Tarea3BDI\Tarea3BDI\Tarea3BDI\obj\Debug\net6.0\Tarea3BDI.AssemblyInfo.cs
+C:\Users\Usuario\Desktop\TEC\Semestre_4\BD1\RepoTarea3\Tarea3BDI\Tarea3BDI\Tarea3BDI\obj\Debug\net6.0\Tarea3BDI.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\TEC\Semestre_4\BD1\RepoTarea3\Tarea3BDI\Tarea3BDI\Tarea3BDI\obj\Debug\net6.0\Tarea3BDI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Usuario\Desktop\TEC\Semestre_4\BD1\RepoTarea3\Tarea3BDI\Tarea3BDI\Tarea3BDI\obj\Debug\net6.0\Tarea3BDI.RazorAssemblyInfo.cache
+C:\Users\Usuario\Desktop\TEC\Semestre_4\BD1\RepoTarea3\Tarea3BDI\Tarea3BDI\Tarea3BDI\obj\Debug\net6.0\Tarea3BDI.RazorAssemblyInfo.cs

@@ -26,13 +26,13 @@ namespace Tarea3BDI.Data
                         oLista.Add(new EmpleadoModel()
                         {
                             NombreEmpleado = dr["NombreEmpleado"].ToString(),
-                            FechaDeNacimiento = dr["FechaDeNacimiento"].GetType().ToString(),
+                            FechaDeNacimiento = dr["FechaDeNacimiento"],
                             IdTipoDocumento = Convert.ToInt32(dr["IdTipoDocumento"]),
                             ValorTipoDocumento = dr["ValorTipoDocumento"].ToString(),
                             IdDepartamento = Convert.ToInt32(dr["IdDepartamento"]),
                             IdPuesto = Convert.ToInt32(dr["IdPuesto"]),
                             Usuario = dr["Usuario"].ToString(),
-                            EsActivo = dr["EsActivo"].GetType().ToString()
+                            EsActivo = dr["EsActivo"]
 
 
                         });

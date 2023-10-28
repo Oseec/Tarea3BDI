@@ -9,7 +9,7 @@ namespace Tarea3BDI.Models
 
         public string NombreEmpleado { get; set; }
 
-        public DateOnly FechaDeNacimiento { get; set; }
+        public DateTime FechaDeNacimiento { get; set; }
 
         public int IdTipoDocumento { get; set; }
 
@@ -23,7 +23,7 @@ namespace Tarea3BDI.Models
 
         public string Password { get; set; }
 
-        public SqlBoolean EsActivo { get; set; }
+        public bool EsActivo { get; set; }
 
     }
 }
