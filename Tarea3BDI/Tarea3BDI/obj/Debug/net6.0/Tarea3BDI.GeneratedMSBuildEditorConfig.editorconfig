@@ -12,7 +12,7 @@ build_property.RootNamespace = Tarea3BDI
 build_property.ProjectDir = C:\Users\Usuario\Desktop\TEC\Semestre_4\BD1\RepoTarea3\Tarea3BDI\Tarea3BDI\Tarea3BDI\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\Usuario\Desktop\TEC\Semestre_4\BD1\RepoTarea3\Tarea3BDI\Tarea3BDI\Tarea3BDI
 build_property._RazorSourceGeneratorDebug = 
 
@@ -22,6 +22,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Usuario/Desktop/TEC/Semestre_4/BD1/RepoTarea3/Tarea3BDI/Tarea3BDI/Tarea3BDI/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/Desktop/TEC/Semestre_4/BD1/RepoTarea3/Tarea3BDI/Tarea3BDI/Tarea3BDI/Views/Mantenedor/InsertarEmpleado.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuZWRvclxJbnNlcnRhckVtcGxlYWRvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Usuario/Desktop/TEC/Semestre_4/BD1/RepoTarea3/Tarea3BDI/Tarea3BDI/Tarea3BDI/Views/Mantenedor/Listar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuZWRvclxMaXN0YXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Usuario/Desktop/TEC/Semestre_4/BD1/RepoTarea3/Tarea3BDI/Tarea3BDI/Tarea3BDI/Views/Shared/Error.cshtml]

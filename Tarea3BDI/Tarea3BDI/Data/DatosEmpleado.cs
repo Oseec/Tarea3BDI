@@ -7,7 +7,7 @@ namespace Tarea3BDI.Data
     public class DatosEmpleado
     {
 
-        public List<EmpleadoModel> Listar()
+        public List<EmpleadoModel> Listar(string clientIPAddress)
         {
             var oLista = new List<EmpleadoModel>();
 
@@ -19,6 +19,9 @@ namespace Tarea3BDI.Data
                 SqlCommand cmd = new SqlCommand("ListarEmpleadosConDetalle", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
 
+
+                cmd.Parameters.AddWithValue("@inPostIP", clientIPAddress);
+
                 using (var dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
@@ -26,13 +29,13 @@ namespace Tarea3BDI.Data
                         oLista.Add(new EmpleadoModel()
                         {
                             NombreEmpleado = dr["NombreEmpleado"].ToString(),
-                            FechaDeNacimiento = dr["FechaDeNacimiento"],
+                            FechaDeNacimiento = Convert.ToDateTime(dr["FechaDeNacimiento"]),
                             IdTipoDocumento = Convert.ToInt32(dr["IdTipoDocumento"]),
                             ValorTipoDocumento = dr["ValorTipoDocumento"].ToString(),
                             IdDepartamento = Convert.ToInt32(dr["IdDepartamento"]),
                             IdPuesto = Convert.ToInt32(dr["IdPuesto"]),
                             Usuario = dr["Usuario"].ToString(),
-                            EsActivo = dr["EsActivo"]
+                            EsActivo = Convert.ToBoolean((dr["EsActivo"]))
 
 
                         });
@@ -40,6 +43,41 @@ namespace Tarea3BDI.Data
                 }
             }
             return oLista;
+        }
+
+        public bool InsertarEmpleado(EmpleadoModel empleadoModel)
+        {
+            bool rpta;
+
+            try
+            {
+                var cn = new Conexion();
+
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("InsertarEmpleado", conexion);
+                    cmd.Parameters.AddWithValue("Nombre", empleadoModel.NombreEmpleado);
+                    cmd.Parameters.AddWithValue("Fecha de nacimiento", empleadoModel.FechaDeNacimiento);
+                    cmd.Parameters.AddWithValue("Tipo de Documento", empleadoModel.IdTipoDocumento);
+                    cmd.Parameters.AddWithValue("Valor de documento", empleadoModel.ValorTipoDocumento);
+                    cmd.Parameters.AddWithValue("Departamento", empleadoModel.IdDepartamento);
+                    cmd.Parameters.AddWithValue("Puesto", empleadoModel.IdPuesto);
+                    cmd.Parameters.AddWithValue("Usuario", empleadoModel.Usuario);
+                    cmd.Parameters.AddWithValue("Contraseña", empleadoModel.Password);
+                    cmd.Parameters.AddWithValue("EsActivo", empleadoModel.EsActivo);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.BeginExecuteNonQuery();
+                }
+                rpta = true;
+            }
+            catch (Exception e)
+            {
+                string error = e.Message;
+                rpta=false;
+            }
+
+            return rpta;
         }
 
     }
