@@ -16,7 +16,7 @@ namespace Tarea3BDI.Data
             using (var conexion = new SqlConnection(cn.getCadenaSQL()))
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("ListarEmpleadosConDetalle", conexion);
+                SqlCommand cmd = new SqlCommand("ListarEmpleadosConDetalles", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
 
 
