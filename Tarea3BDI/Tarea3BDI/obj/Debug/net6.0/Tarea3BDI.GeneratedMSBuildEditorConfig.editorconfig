@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\Usuario\Desktop\TEC\Semestre_4\BD1\RepoTarea3\Tarea3BDI\Tarea3BDI\Tarea3BDI
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Usuario/Desktop/TEC/Semestre_4/BD1/RepoTarea3/Tarea3BDI/Tarea3BDI/Tarea3BDI/Views/Cuenta/ValidacionLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXFZhbGlkYWNpb25Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Usuario/Desktop/TEC/Semestre_4/BD1/RepoTarea3/Tarea3BDI/Tarea3BDI/Tarea3BDI/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

@@ -20,6 +20,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Mantenedor}/{action=InsertarEmpleado}/{id?}");
+    pattern: "{controller=Cuenta}/{action=ValidacionLogin}/{id?}");
 
 app.Run();

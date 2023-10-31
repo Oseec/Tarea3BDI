@@ -31,7 +31,8 @@ namespace Tarea3BDI.Controllers
         [HttpPost]
         public IActionResult InsertarEmpleado(EmpleadoModel empleadoModel)
         {
-            var respuesta = datosEmpleado.InsertarEmpleado(empleadoModel);
+            string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+            var respuesta = datosEmpleado.InsertarEmpleado(empleadoModel, clientIPAddress);
             if(respuesta)
                 return RedirectToAction("Listar");
             else
@@ -39,3 +40,4 @@ namespace Tarea3BDI.Controllers
         }
     }
 }
+ 

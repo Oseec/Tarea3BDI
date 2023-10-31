@@ -45,7 +45,7 @@ namespace Tarea3BDI.Data
             return oLista;
         }
 
-        public bool InsertarEmpleado(EmpleadoModel empleadoModel)
+        public bool InsertarEmpleado(EmpleadoModel empleadoModel, string clientIPAddress)
         {
             bool rpta;
 
@@ -66,6 +66,7 @@ namespace Tarea3BDI.Data
                     cmd.Parameters.AddWithValue("Usuario", empleadoModel.Usuario);
                     cmd.Parameters.AddWithValue("Contraseña", empleadoModel.Password);
                     cmd.Parameters.AddWithValue("EsActivo", empleadoModel.EsActivo);
+                    cmd.Parameters.AddWithValue("@inPostIP", clientIPAddress);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.BeginExecuteNonQuery();
                 }
