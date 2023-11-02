@@ -7,7 +7,7 @@ namespace Tarea3BDI.Data
     public class DatosUsuario
     {
 
-        public bool ValidacionLogin(string Username, string Pwd, int Tipo, string postIP)
+        public bool ValidacionLogin(/*int Id,*/ string Pwd, int Tipo, string Username, string postIP)
         {
             try
             {
@@ -19,13 +19,15 @@ namespace Tarea3BDI.Data
                     using (var command = new SqlCommand("ValidacionLogin", conexion))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add(new SqlParameter("@inUsername", Username));
+                        command.Parameters.Clear();
+                        //command.Parameters.Add(new SqlParameter("@inId", Id));
                         command.Parameters.Add(new SqlParameter("@inPwd", Pwd));
                         command.Parameters.Add(new SqlParameter("@inTipo", Tipo));
+                        command.Parameters.Add(new SqlParameter("@inUsername", Username));
                         command.Parameters.Add(new SqlParameter("@inPostIP", postIP));
 
                         // Parámetro de salida
-                        var resultado = new SqlParameter("@UsuarioEncontrado", SqlDbType.Bit);
+                        var resultado = new SqlParameter("@outResultado", SqlDbType.Bit);
                         resultado.Direction = ParameterDirection.Output;
                         command.Parameters.Add(resultado);
 
@@ -36,7 +38,7 @@ namespace Tarea3BDI.Data
                 }
             }
             catch (Exception e)
-            {
+            {  
                 // Manejar la excepción si es necesario
                 return false; // Indicar que hubo un error
             }
