@@ -7,7 +7,7 @@ namespace Tarea3BDI.Data
     public class DatosEmpleado
     {
 
-        public List<EmpleadoModel> Listar(string clientIPAddress)
+        public List<EmpleadoModel> Listar(string clientIPAddress, int IdUsuario)
         {
             var oLista = new List<EmpleadoModel>();
 
@@ -21,6 +21,7 @@ namespace Tarea3BDI.Data
 
 
                 cmd.Parameters.AddWithValue("@inPostIP", clientIPAddress);
+                cmd.Parameters.AddWithValue("@inIdUsuario", IdUsuario);
 
                 using (var dr = cmd.ExecuteReader())
                 {
@@ -45,7 +46,7 @@ namespace Tarea3BDI.Data
             return oLista;
         }
 
-        public bool InsertarEmpleado(EmpleadoModel empleadoModel, string clientIPAddress)
+        public bool InsertarEmpleado(EmpleadoModel empleadoModel, string clientIPAddress, int IdUsuario)
         {
             bool rpta;
 
@@ -67,6 +68,7 @@ namespace Tarea3BDI.Data
                     cmd.Parameters.AddWithValue("Contraseña", empleadoModel.Password);
                     cmd.Parameters.AddWithValue("EsActivo", empleadoModel.EsActivo);
                     cmd.Parameters.AddWithValue("@inPostIP", clientIPAddress);
+                    cmd.Parameters.AddWithValue("@inIdUsuario", IdUsuario);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.BeginExecuteNonQuery();
                 }
@@ -80,6 +82,9 @@ namespace Tarea3BDI.Data
 
             return rpta;
         }
+
+        
+
 
     }
 }

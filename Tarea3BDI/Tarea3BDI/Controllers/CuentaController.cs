@@ -30,7 +30,7 @@ namespace Tarea3BDI.Controllers
             if (resultado == true && loginModel.Tipo == 1)
             {
                 // La validación fue exitosa, redirige al usuario a la página deseada
-                return RedirectToAction("Index", "Home"); 
+                return RedirectToAction("InsertarEmpleado", "Mantenedor"); 
             }
 
             else

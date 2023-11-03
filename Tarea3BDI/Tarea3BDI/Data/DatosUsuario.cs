@@ -43,6 +43,45 @@ namespace Tarea3BDI.Data
                 return false; // Indicar que hubo un error
             }
         }
+
+        public int ObtieneIdUsuario(string Username, string Pwd, int Tipo)
+        {
+            var cn = new Conexion();
+
+            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                conexion.Open();
+                using (var command = new SqlCommand("ObtieneIdUsuario", conexion))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@inUsername", Username));
+                    command.Parameters.Add(new SqlParameter("@inPwd", Pwd));
+                    command.Parameters.Add(new SqlParameter("@inTipo", Tipo));
+
+                    var idUsuarioParameter = new SqlParameter("@outIdUsuario", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(idUsuarioParameter);
+
+                    command.ExecuteNonQuery();
+
+                    if (idUsuarioParameter.Value != DBNull.Value)
+                    {
+                        return (int)idUsuarioParameter.Value;
+                    }
+                    else
+                    {
+                        // El usuario no fue encontrado o la contraseña es incorrecta
+                        return -1; // O un valor que indique que no se encontró el usuario
+                    }
+
+                }
+
+
+            }
+        }
+
     }
 }
 

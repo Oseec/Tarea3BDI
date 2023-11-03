@@ -11,16 +11,22 @@ namespace Tarea3BDI.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         DatosEmpleado datosEmpleado = new DatosEmpleado();
+        DatosUsuario datosUsuario = new DatosUsuario();
 
         public MantenedorController(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
         }
-        public IActionResult Listar()
+        public IActionResult Listar(LoginModel loginModel)
         {
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
 
-            var oLista = datosEmpleado.Listar(clientIPAddress);
+            string pwd = loginModel.Pwd;
+            int tipo = loginModel.Tipo;
+            string username = loginModel.Username;
+            int IdUsuario = datosUsuario.ObtieneIdUsuario(username, pwd, tipo);
+
+            var oLista = datosEmpleado.Listar(clientIPAddress, IdUsuario);
             return View(oLista);
         }
 
@@ -29,15 +35,33 @@ namespace Tarea3BDI.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult InsertarEmpleado(EmpleadoModel empleadoModel)
+        public IActionResult InsertarEmpleado(EmpleadoModel empleadoModel, LoginModel loginModel)
         {
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
-            var respuesta = datosEmpleado.InsertarEmpleado(empleadoModel, clientIPAddress);
+
+            string pwd = loginModel.Pwd;
+            int tipo = loginModel.Tipo;
+            string username = loginModel.Username;
+            int IdUsuario = datosUsuario.ObtieneIdUsuario(username, pwd, tipo);
+
+            var respuesta = datosEmpleado.InsertarEmpleado(empleadoModel, clientIPAddress, IdUsuario);
             if(respuesta)
                 return RedirectToAction("Listar");
             else
                 return View();
         }
+
+        /*
+        public IActionResult ObtieneIdUsuario(LoginModel loginModel)
+        {
+            string pwd = loginModel.Pwd;
+            int tipo = loginModel.Tipo;
+            string username = loginModel.Username;
+
+            int IdUsuario = datosUsuario.ObtieneIdUsuario(username, pwd, tipo);
+            return View();
+        }
+        */
     }
 }
  
