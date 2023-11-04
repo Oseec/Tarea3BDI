@@ -11,22 +11,17 @@ namespace Tarea3BDI.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         DatosEmpleado datosEmpleado = new DatosEmpleado();
-        DatosUsuario datosUsuario = new DatosUsuario();
 
         public MantenedorController(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
         }
-        public IActionResult Listar(LoginModel loginModel)
+        public IActionResult Listar()
         {
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
 
-            string pwd = loginModel.Pwd;
-            int tipo = loginModel.Tipo;
-            string username = loginModel.Username;
-            int IdUsuario = datosUsuario.ObtieneIdUsuario(username, pwd, tipo);
 
-            var oLista = datosEmpleado.Listar(clientIPAddress, IdUsuario);
+            var oLista = datosEmpleado.Listar(clientIPAddress);
             return View(oLista);
         }
 
@@ -35,18 +30,12 @@ namespace Tarea3BDI.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult InsertarEmpleado(EmpleadoModel empleadoModel, LoginModel loginModel)
+        public IActionResult InsertarEmpleado(EmpleadoModel empleadoModel)
         {
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
-
-            string pwd = loginModel.Pwd;
-            int tipo = loginModel.Tipo;
-            string username = loginModel.Username;
-            int IdUsuario = datosUsuario.ObtieneIdUsuario(username, pwd, tipo);
-
-            var respuesta = datosEmpleado.InsertarEmpleado(empleadoModel, clientIPAddress, IdUsuario);
+            var respuesta = datosEmpleado.InsertarEmpleado(empleadoModel, clientIPAddress);
             if(respuesta)
-                return RedirectToAction("Listar");
+                return RedirectToAction("Index", "Home");
             else
                 return View();
         }
