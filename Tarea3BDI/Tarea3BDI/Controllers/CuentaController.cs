@@ -25,17 +25,18 @@ namespace Tarea3BDI.Controllers
         {
             string clientIPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
 
-            bool resultado = datosUsuario.ValidacionLogin(/*loginModel.Id,*/ loginModel.Pwd, loginModel.Tipo, loginModel.Username, clientIPAddress);
+            (bool validacionResultado, int idUsuario) = datosUsuario.ValidacionLogin(/*loginModel.Id,*/ loginModel.Pwd, loginModel.Tipo, loginModel.Username, clientIPAddress);
+            
 
-            if (resultado == true && loginModel.Tipo == 1)
+            if (validacionResultado == true && loginModel.Tipo == 2)
             {
                 // La validación fue exitosa, redirige al usuario a la página deseada
-                return RedirectToAction("InsertarEmpleado", "Mantenedor"); 
+                return RedirectToAction("InsertarEmpleado", "Mantenedor", new { idUsuario = idUsuario}); 
             }
 
             else
             {
-                if (resultado == true && loginModel.Tipo == 2)
+                if (validacionResultado == true && loginModel.Tipo == 1)
                 {
                     // La validación fue exitosa, redirige al usuario a la página deseada
                     return RedirectToAction("Privacy", "Home");

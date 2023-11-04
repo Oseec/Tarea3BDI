@@ -11,6 +11,7 @@ namespace Tarea3BDI.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         DatosEmpleado datosEmpleado = new DatosEmpleado();
+        DatosUsuario datosUsuario = new DatosUsuario();
 
         public MantenedorController(IHttpContextAccessor httpContextAccessor)
         {
@@ -30,27 +31,27 @@ namespace Tarea3BDI.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult InsertarEmpleado(EmpleadoModel empleadoModel)
+        public IActionResult InsertarEmpleado(EmpleadoModel empleadoModel, int IdUsuario)
         {
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
-            var respuesta = datosEmpleado.InsertarEmpleado(empleadoModel, clientIPAddress);
+
+            var respuesta = datosEmpleado.InsertarEmpleado(empleadoModel, clientIPAddress, IdUsuario);
             if(respuesta)
                 return RedirectToAction("Index", "Home");
             else
                 return View();
-        }
-
-        /*
-        public IActionResult ObtieneIdUsuario(LoginModel loginModel)
-        {
-            string pwd = loginModel.Pwd;
-            int tipo = loginModel.Tipo;
-            string username = loginModel.Username;
-
-            int IdUsuario = datosUsuario.ObtieneIdUsuario(username, pwd, tipo);
-            return View();
-        }
-        */
+        }  
     }
 }
- 
+
+/*
+public IActionResult ObtieneIdUsuario(LoginModel loginModel)
+{
+    string pwd = loginModel.Pwd;
+    int tipo = loginModel.Tipo;
+    string username = loginModel.Username;
+
+    int IdUsuario = datosEmpleado.ObtieneIdUsuario(username, pwd, tipo);
+    return View();
+}
+*/

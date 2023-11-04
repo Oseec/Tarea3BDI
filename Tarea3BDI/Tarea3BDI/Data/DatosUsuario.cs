@@ -7,7 +7,7 @@ namespace Tarea3BDI.Data
     public class DatosUsuario
     {
 
-        public bool ValidacionLogin(/*int Id,*/ string Pwd, int Tipo, string Username, string postIP)
+        public (bool, int) ValidacionLogin(/*int Id,*/ string Pwd, int Tipo, string Username, string postIP)
         {
             try
             {
@@ -31,16 +31,24 @@ namespace Tarea3BDI.Data
                         resultado.Direction = ParameterDirection.Output;
                         command.Parameters.Add(resultado);
 
+                        // Parámetro de salida para el IdUsuario
+                        var idUsuario = new SqlParameter("@outIdUsuario", SqlDbType.Int);
+                        idUsuario.Direction = ParameterDirection.Output;
+                        command.Parameters.Add(idUsuario);
+
                         command.ExecuteNonQuery();
 
-                        return (bool)resultado.Value;
+                        bool validacionResultado = (bool)resultado.Value;
+                        int idUsuarioResultado = (idUsuario.Value != DBNull.Value) ? (int)idUsuario.Value : -1; // -1 si no se encontró un IdUsuario
+
+                        return (validacionResultado, idUsuarioResultado);
                     }
                 }
             }
             catch (Exception e)
             {  
                 // Manejar la excepción si es necesario
-                return false; // Indicar que hubo un error
+                return (false, -1); // Indicar que hubo un error
             }
         }
 
