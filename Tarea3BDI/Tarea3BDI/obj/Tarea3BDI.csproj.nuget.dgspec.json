@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\RepoTarea3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj": {}
+    "C:\\Users\\User\\Documents\\TEC\\2 Semestre 2023\\Bases de datos\\TareaProgramada3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\RepoTarea3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj": {
+    "C:\\Users\\User\\Documents\\TEC\\2 Semestre 2023\\Bases de datos\\TareaProgramada3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\RepoTarea3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\TEC\\2 Semestre 2023\\Bases de datos\\TareaProgramada3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj",
         "projectName": "Tarea3BDI",
-        "projectPath": "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\RepoTarea3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj",
-        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Desktop\\TEC\\Semestre_4\\BD1\\RepoTarea3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\obj\\",
+        "projectPath": "C:\\Users\\User\\Documents\\TEC\\2 Semestre 2023\\Bases de datos\\TareaProgramada3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Documents\\TEC\\2 Semestre 2023\\Bases de datos\\TareaProgramada3\\Tarea3BDI\\Tarea3BDI\\Tarea3BDI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +43,20 @@
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[6.0.24, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.13, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",

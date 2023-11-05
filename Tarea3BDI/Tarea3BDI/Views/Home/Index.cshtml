@@ -6,3 +6,12 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<form asp-controller="HomeController" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="archivo">Seleccione un archivo:</label>
+        <input type="file" name="Archivo" id="Archivo" class="form-control-file" />
+        <button asp-action="UploadCatalogo" type="submit" class="btn btn-primary">Subir Catalogo</button>
+    </div>
+
+</form>
