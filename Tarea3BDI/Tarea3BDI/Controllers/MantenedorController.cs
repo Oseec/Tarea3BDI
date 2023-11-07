@@ -17,17 +17,22 @@ namespace Tarea3BDI.Controllers
         {
             _httpContextAccessor = httpContextAccessor;
         }
-        public IActionResult Listar()
-        {
+        public IActionResult Listar(int idUsuario)
+        { 
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
 
 
-            var oLista = datosEmpleado.Listar(clientIPAddress);
+            var oLista = datosEmpleado.Listar(clientIPAddress, idUsuario);
+
+            
+            
             return View(oLista);
+
         }
 
         public IActionResult InsertarEmpleado(int idUsuario)
         {
+            
             ViewBag.idUsuario = idUsuario;
             return View();
         }
