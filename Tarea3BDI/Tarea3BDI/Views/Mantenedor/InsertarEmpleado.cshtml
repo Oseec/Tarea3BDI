@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "InsertarEmpleado";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.idUsuario = (object)ViewBag.idUsuario;
 }
 
 <div class="card">
@@ -11,9 +12,11 @@
     <div class="card-body">
         
         <form asp-action="InsertarEmpleado" asp-controller="Mantenedor" method="post">
+            <input asp-for ="IdUsuario" hidden value="@ViewBag.idUsuario" class="form-control">
             <div class="mb-3">
                 <label class="form-label">Nombre del empleado</label>
                 <input asp-for="NombreEmpleado" type="text" class="form-control">
+                <p>Using ViewBag: @ViewBag.idUsuario</p>
             </div>
             <div class="mb-3">
                 <label class="form-label">Fecha de Nacimiento</label>
@@ -56,7 +59,7 @@
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Insertar</button>
-                <a>Volver a la lista</a>
+                <a asp-action="Listar" asp-controller="Mnatenedor" class="btn btn-warning">Volver a la lista</a>
             </div>
             
         </form>

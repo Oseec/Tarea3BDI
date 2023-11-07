@@ -26,16 +26,19 @@ namespace Tarea3BDI.Controllers
             return View(oLista);
         }
 
-        public IActionResult InsertarEmpleado()
+        public IActionResult InsertarEmpleado(int idUsuario)
         {
+            ViewBag.idUsuario = idUsuario;
             return View();
         }
         [HttpPost]
-        public IActionResult InsertarEmpleado(EmpleadoModel empleadoModel, int IdUsuario)
+        public IActionResult InsertarEmpleado(EmpleadoModel empleadoModel, int idUsuario)
         {
+            
+            
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
 
-            var respuesta = datosEmpleado.InsertarEmpleado(empleadoModel, clientIPAddress, IdUsuario);
+            var respuesta = datosEmpleado.InsertarEmpleado(empleadoModel, clientIPAddress, idUsuario);
             if(respuesta)
                 return RedirectToAction("Index", "Home");
             else

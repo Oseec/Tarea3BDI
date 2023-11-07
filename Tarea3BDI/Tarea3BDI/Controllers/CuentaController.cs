@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Tarea3BDI.Data;
 using Tarea3BDI.Models;
 
@@ -28,15 +28,17 @@ namespace Tarea3BDI.Controllers
             (bool validacionResultado, int idUsuario) = datosUsuario.ValidacionLogin(/*loginModel.Id,*/ loginModel.Pwd, loginModel.Tipo, loginModel.Username, clientIPAddress);
             
 
-            if (validacionResultado == true && loginModel.Tipo == 2)
+            if (validacionResultado == true && loginModel.Tipo == 1)
             {
-                // La validación fue exitosa, redirige al usuario a la página deseada
-                return RedirectToAction("InsertarEmpleado", "Mantenedor", new { idUsuario = idUsuario}); 
+
+                //ViewBag.idUsuario = ;
+                
+                return RedirectToAction("InsertarEmpleado", "Mantenedor", new {idUsuario = idUsuario}); 
             }
 
             else
             {
-                if (validacionResultado == true && loginModel.Tipo == 1)
+                if (validacionResultado == true && loginModel.Tipo == 2)
                 {
                     // La validación fue exitosa, redirige al usuario a la página deseada
                     return RedirectToAction("Privacy", "Home");

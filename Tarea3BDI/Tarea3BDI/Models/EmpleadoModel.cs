@@ -5,7 +5,7 @@ namespace Tarea3BDI.Models
     public class EmpleadoModel
     {
 
-        //public int Id { get; set; }
+        public int Id { get; set; }
 
         public string NombreEmpleado { get; set; }
 
@@ -24,6 +24,8 @@ namespace Tarea3BDI.Models
         public string Password { get; set; }
 
         public bool EsActivo { get; set; }
+
+        public int IdUsuario { get; set; }
 
     }
 }
