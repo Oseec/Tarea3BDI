@@ -11,12 +11,17 @@ namespace Tarea3BDI.Models
 
         public DateTime FechaDeNacimiento { get; set; }
 
+        public string NombreTipoDocumento { get; set; }
+
         public int IdTipoDocumento { get; set; }
 
         public string ValorTipoDocumento { get; set; }
 
+        public string NombreDepartamento { get; set; }
+
         public int IdDepartamento { get; set; }
         
+        public string NombrePuesto { get; set; }
         public int IdPuesto { get; set; }
 
         public string Usuario { get; set; }
