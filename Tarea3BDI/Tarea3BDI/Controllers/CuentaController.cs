@@ -25,16 +25,10 @@ namespace Tarea3BDI.Controllers
         {
             string clientIPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
 
-            (bool validacionResultado, int idUsuario) = datosUsuario.ValidacionLogin(/*loginModel.Id,*/ loginModel.Pwd, loginModel.Tipo, loginModel.Username, clientIPAddress);
-            
-            
+            (bool validacionResultado, int idUsuario) = datosUsuario.ValidacionLogin(loginModel.Pwd, loginModel.Tipo, loginModel.Username, clientIPAddress);
 
             if (validacionResultado == true && loginModel.Tipo == 1)
-            {
-
-                //ViewBag.idUsuario = idUsuario;
-                //TempData["IdUsuario"] = loginModel.Id;
-                
+            {               
                 return RedirectToAction("listar", "Mantenedor", new {idUsuario = idUsuario}); 
             }
 

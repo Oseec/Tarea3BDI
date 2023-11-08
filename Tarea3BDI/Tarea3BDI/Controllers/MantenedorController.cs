@@ -21,19 +21,17 @@ namespace Tarea3BDI.Controllers
         { 
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
 
-
             var oLista = datosEmpleado.Listar(clientIPAddress, idUsuario);
 
-            
-            
-            return View(oLista);
+            //ViewBag.idUsuario = idUsuario;
 
+            return View(oLista);
         }
 
         public IActionResult InsertarEmpleado(int idUsuario)
         {
-            
             ViewBag.idUsuario = idUsuario;
+
             return View();
         }
         [HttpPost]
