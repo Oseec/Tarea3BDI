@@ -6,59 +6,7 @@ namespace Tarea3BDI.Data
 {
     public class DatosEmpleado
     {
-        /*
-        public class EmpleadoListModel
-        {
-            public List<EmpleadoModel> Empleado { get; set; }
-            public int IdUsuario { get; set; }
-        }
-
-        public EmpleadoListModel Listar(string clientIPAddress, int idUsuario)
-        {
-            var oLista = new List<EmpleadoModel>();
-
-            var cn = new Conexion();
-
-            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
-            {
-                conexion.Open();
-                SqlCommand cmd = new SqlCommand("ListarEmpleadosConDetalles", conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@inPostIP", clientIPAddress);
-                cmd.Parameters.AddWithValue("@inIdUsuario", idUsuario);
-
-                using (var dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        oLista.Add(new EmpleadoModel()
-                        {
-                            NombreEmpleado = dr["NombreEmpleado"].ToString(),
-                            FechaDeNacimiento = Convert.ToDateTime(dr["FechaDeNacimiento"]),
-                            IdTipoDocumento = Convert.ToInt32(dr["IdTipoDocumento"]),
-                            ValorTipoDocumento = dr["ValorTipoDocumento"].ToString(),
-                            IdDepartamento = Convert.ToInt32(dr["IdDepartamento"]),
-                            IdPuesto = Convert.ToInt32(dr["IdPuesto"]),
-                            Usuario = dr["Usuario"].ToString(),
-                            EsActivo = Convert.ToBoolean((dr["EsActivo"]))
-                        });
-                    }
-                }
-            }
-
-            // Crear una instancia de EmpleadoListModel que contiene tanto los empleados como el idUsuario
-            var resultado = new EmpleadoListModel
-            {
-                Empleado = oLista,
-                IdUsuario = idUsuario
-            };
-
-            return resultado;
-        }
-        */
-
-        
+                
         public List<EmpleadoModel> Listar(string clientIPAddress, int idUsuario)
         {
             var oLista = new List<EmpleadoModel>();
@@ -83,10 +31,10 @@ namespace Tarea3BDI.Data
                         {
                             NombreEmpleado = dr["NombreEmpleado"].ToString(),
                             FechaDeNacimiento = Convert.ToDateTime(dr["FechaDeNacimiento"]),
-                            IdTipoDocumento = Convert.ToInt32(dr["IdTipoDocumento"]),
+                            //IdTipoDocumento = Convert.ToInt32(dr["IdTipoDocumento"]),
                             ValorTipoDocumento = dr["ValorTipoDocumento"].ToString(),
-                            IdDepartamento = Convert.ToInt32(dr["IdDepartamento"]),
-                            IdPuesto = Convert.ToInt32(dr["IdPuesto"]),
+                            //IdDepartamento = Convert.ToInt32(dr["IdDepartamento"]),
+                            //IdPuesto = Convert.ToInt32(dr["IdPuesto"]),
                             Usuario = dr["Usuario"].ToString(),
                             EsActivo = Convert.ToBoolean((dr["EsActivo"]))
 
