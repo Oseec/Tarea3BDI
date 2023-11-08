@@ -31,13 +31,15 @@ namespace Tarea3BDI.Data
                         {
                             NombreEmpleado = dr["NombreEmpleado"].ToString(),
                             FechaDeNacimiento = Convert.ToDateTime(dr["FechaDeNacimiento"]),
-                            //IdTipoDocumento = Convert.ToInt32(dr["IdTipoDocumento"]),
+                            IdTipoDocumento = Convert.ToInt32(dr["IdTipoDocumento"]),
+                            NombreTipoDocumento = dr["NombreTipoDocumento"].ToString(),
                             ValorTipoDocumento = dr["ValorTipoDocumento"].ToString(),
-                            //IdDepartamento = Convert.ToInt32(dr["IdDepartamento"]),
-                            //IdPuesto = Convert.ToInt32(dr["IdPuesto"]),
+                            NombreDepartamento = dr["NombreDepartamento"].ToString(),
+                            IdDepartamento = Convert.ToInt32(dr["IdDepartamento"]),
+                            NombrePuesto = dr["NombrePuesto"].ToString(),
+                            IdPuesto = Convert.ToInt32(dr["IdPuesto"]),
                             Usuario = dr["Usuario"].ToString(),
                             EsActivo = Convert.ToBoolean((dr["EsActivo"]))
-
 
                         });
                     }
