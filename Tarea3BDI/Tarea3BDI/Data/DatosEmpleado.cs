@@ -39,7 +39,7 @@ namespace Tarea3BDI.Data
                             NombrePuesto = dr["NombrePuesto"].ToString(),
                             IdPuesto = Convert.ToInt32(dr["IdPuesto"]),
                             Usuario = dr["Usuario"].ToString(),
-                            EsActivo = Convert.ToBoolean((dr["EsActivo"]))
+                            EsActivo = Convert.ToBoolean((dr["EsActivo"])),
 
                         });
                     }

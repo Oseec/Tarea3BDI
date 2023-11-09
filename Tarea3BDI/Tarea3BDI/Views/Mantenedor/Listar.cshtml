@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Listar";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.idUsuario = (object)ViewBag.idUsuario;
 }
 
 <div class="card">
@@ -9,13 +10,15 @@
         Lista Empleados
     </div>
     <div class="card-body">
-        <a asp-action="InsertarEmpleado" asp-controller="Mantenedor" class="btn btn-success"><i class="bi bi-plus-circle"></i> Crear Nuevo</a>
+
+        <p>Using ViewBag: @ViewBag.idUsuario</p>
+        <a asp-action="InsertarEmpleado" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" class="btn btn-success"><i class="bi bi-plus-circle"></i> Crear Nuevo</a>
         <hr />
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Nombre Empleado</th>
-                    <p>Using ViewBag: @ViewBag.idUsuario</p>
+                    
                     <th>Fecha De Nacimiento</th>
                     <th>Tipo Documento</th>
                     <th>Valor Tipo Documento</th>

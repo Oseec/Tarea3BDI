@@ -8,6 +8,7 @@ namespace Tarea3BDI.Controllers
 {
     public class MantenedorController : Controller
     {
+
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         DatosEmpleado datosEmpleado = new DatosEmpleado();
@@ -17,18 +18,18 @@ namespace Tarea3BDI.Controllers
         {
             _httpContextAccessor = httpContextAccessor;
         }
+
+   
         public IActionResult Listar(int idUsuario)
         { 
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
-
             var oLista = datosEmpleado.Listar(clientIPAddress, idUsuario);
 
-            //ViewBag.idUsuario = idUsuario;
-
+            ViewBag.idUsuario = idUsuario;
             return View(oLista);
         }
 
-        public IActionResult InsertarEmpleado(int idUsuario)
+        public IActionResult InsertarEmpleado([FromRoute] int idUsuario)
         {
             ViewBag.idUsuario = idUsuario;
 

@@ -31,7 +31,6 @@ namespace Tarea3BDI.Controllers
             {               
                 return RedirectToAction("listar", "Mantenedor", new {idUsuario = idUsuario}); 
             }
-
             else
             {
                 if (validacionResultado == true && loginModel.Tipo == 2)
@@ -43,11 +42,9 @@ namespace Tarea3BDI.Controllers
                 {
                     // La validación falló, muestra un mensaje de error o redirige al usuario a una página de inicio de sesión
                     return View();
-                }
-                
+                }               
             }
         }
-
     }
 }
 
