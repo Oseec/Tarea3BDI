@@ -19,7 +19,7 @@ namespace Tarea3BDI.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
-   
+        
         public IActionResult Listar(int idUsuario)
         { 
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
@@ -29,17 +29,15 @@ namespace Tarea3BDI.Controllers
             return View(oLista);
         }
 
-        public IActionResult InsertarEmpleado([FromRoute] int idUsuario)
+        public IActionResult InsertarEmpleado(int idUsuario)
         {
             ViewBag.idUsuario = idUsuario;
-
+            //ViewBag.idUsuario;
             return View();
         }
         [HttpPost]
         public IActionResult InsertarEmpleado(EmpleadoModel empleadoModel, int idUsuario)
-        {
-            
-            
+        {   
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
 
             var respuesta = datosEmpleado.InsertarEmpleado(empleadoModel, clientIPAddress, idUsuario);

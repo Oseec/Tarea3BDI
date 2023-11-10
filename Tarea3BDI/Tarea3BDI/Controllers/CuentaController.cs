@@ -28,7 +28,8 @@ namespace Tarea3BDI.Controllers
             (bool validacionResultado, int idUsuario) = datosUsuario.ValidacionLogin(loginModel.Pwd, loginModel.Tipo, loginModel.Username, clientIPAddress);
 
             if (validacionResultado == true && loginModel.Tipo == 1)
-            {               
+            {
+               
                 return RedirectToAction("listar", "Mantenedor", new {idUsuario = idUsuario}); 
             }
             else
