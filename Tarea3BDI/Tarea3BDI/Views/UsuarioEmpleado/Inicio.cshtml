@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "UsuarioEmpleado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>UsuarioEmpleado</h1>
+
+<form asp-action="InicioConsultaPlaSemanal" asp-controller="ConsultaPlaSemanal" method="post">
+    <button type="submit" class="btn btn-primary">Consultar planilla semanal</button>
+
+</form>
+
+
+<form asp-action="InicioConsultaPlaMensual" asp-controller="ConsultaPlaMensual" method="post">
+    <button type="submit" class="btn btn-primary">Consultar planilla mensual</button>
+</form>

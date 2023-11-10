@@ -37,7 +37,7 @@ namespace Tarea3BDI.Controllers
                 if (validacionResultado == true && loginModel.Tipo == 2)
                 {
                     // La validación fue exitosa, redirige al usuario a la página deseada
-                    return RedirectToAction("Privacy", "Home");
+                    return RedirectToAction("Inicio", "UsuarioEmpleado", new {idUsuario = idUsuario});
                 }
                 else
                 {
