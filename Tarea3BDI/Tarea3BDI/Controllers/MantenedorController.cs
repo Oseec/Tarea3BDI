@@ -32,7 +32,7 @@ namespace Tarea3BDI.Controllers
         public IActionResult InsertarEmpleado(int idUsuario)
         {
             ViewBag.idUsuario = idUsuario;
-            //ViewBag.idUsuario;
+            
             return View();
         }
         [HttpPost]
@@ -45,7 +45,29 @@ namespace Tarea3BDI.Controllers
                 return RedirectToAction("Index", "Home");
             else
                 return View();
-        }  
+        }
+
+        public IActionResult ELiminar(int idUsuario)
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ELiminar(int Id, int idUsuario)
+        {
+            string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+            return View();
+        }
+
+        public IActionResult Editar(int idUsuario)
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Editar(int idUsuario)
+        {
+            string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+            return View();
+        }
     }
 }
 
