@@ -1,0 +1,39 @@
+﻿@model List<PlanillaMesXEmpleadoModel>
+@{
+    ViewData["Title"] = "InicioConsultaMensual";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Últimos 12 meses de planilla del empleado: @Model.FirstOrDefault()?.NombreEmpleado
+    </div>
+    <div class="card-body">
+        <hr />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Mes</th>
+                    <th>Salario Bruto</th>
+                    <th>Salario Neto</th>
+                    <th>Total deducciones</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i=0; i<12; i++)
+                {
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td>@Model[i].SalarioBruto</td>
+                        <td>@Model[i].SalarioNeto</td>
+                        <td>@Model[i].TotalDeducciones</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+
+    </div>
+</div>

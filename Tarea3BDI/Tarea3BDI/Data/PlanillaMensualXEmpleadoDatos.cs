@@ -4,20 +4,18 @@ using Tarea3BDI.Models;
 
 namespace Tarea3BDI.Data
 {
-    public class PlanillaSemanalXEmpleadoDatos
+    public class PlanillaMensualXEmpleadoDatos
     {
-        public List<PlanillaSemanaXEmpleadoModel> Listar(string clientIPAddress, int idUsuario, int idEmpleado)
+        public List<PlanillaMesXEmpleadoModel> Listar(string clientIPAddress, int idUsuario, int idEmpleado)
         {
-            var oLista = new List<PlanillaSemanaXEmpleadoModel>();
-
-            Console.WriteLine($"Valor de IdEmpleado: {idEmpleado}");
+            var oLista = new List<PlanillaMesXEmpleadoModel>();
 
             var cn = new Conexion();
 
             using (var conexion = new SqlConnection(cn.getCadenaSQL()))
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("ListarPlanillaXSemanaEmpleado", conexion);
+                SqlCommand cmd = new SqlCommand("ListarPlanillaXMesEmpleado", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
 
 
@@ -29,17 +27,13 @@ namespace Tarea3BDI.Data
                 {
                     while (dr.Read())
                     {
-                        oLista.Add(new PlanillaSemanaXEmpleadoModel()
+                        oLista.Add(new PlanillaMesXEmpleadoModel()
                         {
                             Id = Convert.ToInt32(dr["Id"]),
-                            NombreEmpleado = dr["NombreEmpleado"] as string ?? string.Empty,
-                            IdEmpleado = Convert.ToInt32(dr["IdEmpleado"]),
                             SalarioNeto = Convert.ToDecimal(dr["SalarioNeto"]),
                             SalarioBruto = Convert.ToDecimal(dr["SalarioBruto"]),
                             TotalDeducciones = Convert.ToDecimal(dr["TotalDeducciones"]),
-                            HorasOrdinarias = Convert.ToInt32(dr["HorasOrdinarias"]),
-                            HorasExtraNormales = Convert.ToInt32(dr["HorasExtraNormales"]),
-                            HorasExtraDobles = Convert.ToInt32(dr["HorasExtraDobles"])
+                            IdMesPlanilla = Convert.ToInt32(dr["IdMesPlanilla"])
 
                         });
                     }
@@ -48,5 +42,6 @@ namespace Tarea3BDI.Data
             }
             return oLista;
         }
+
     }
 }

@@ -18,13 +18,13 @@ namespace Tarea3BDI.Controllers
             return View();
         }
 
-        public IActionResult InicioConsultaPlaSemanal(int idUsuario)
+        public IActionResult InicioConsultaPlaSemanal(int idUsuario, int idEmpleado)
         {
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
 
-            var olist = DatosPlanillaSemanaXEmpleado.Listar(clientIPAddress, idUsuario);
+            var olist = DatosPlanillaSemanaXEmpleado.Listar(clientIPAddress, idUsuario, idEmpleado);
 
-            return View();
+            return View(olist);
         }
 
     }

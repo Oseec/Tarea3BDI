@@ -2,11 +2,9 @@
 
 namespace Tarea3BDI.Models
 {
-    public class PlanillaSemanaXEmpleadoModel
+    public class PlanillaMesXEmpleadoModel
     {
         public int Id { get; set; }
-
-        public int IdEmpleado { get; set; }
 
         public string NombreEmpleado { get; set; }
 
@@ -16,11 +14,7 @@ namespace Tarea3BDI.Models
 
         public SqlMoney TotalDeducciones { get; set; }
 
-        public int HorasOrdinarias { get; set; }
-
-        public int HorasExtraNormales { get; set; }
-
-        public int HorasExtraDobles { get; set; }
+        public int IdMesPlanilla { get; set; }
 
 
     }

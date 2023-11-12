@@ -10,9 +10,10 @@ namespace Tarea3BDI.Controllers
         PlanillaSemanalXEmpleadoDatos DatosPlanillaSemanaXEmpleado = new PlanillaSemanalXEmpleadoDatos();
 
 
-        public IActionResult Inicio()
+        public IActionResult Inicio(int idUsuario, int idEmpleado)
         {
-
+            ViewBag.IdUsuario = idUsuario;
+            ViewBag.IdEmpleado = idEmpleado;
             return View();
         }
     }

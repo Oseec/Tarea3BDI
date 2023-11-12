@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Data.SqlClient;
 using Tarea3BDI.Data;
 using Tarea3BDI.Models;
 
 namespace Tarea3BDI.Controllers
 {
-    
+
     public class CuentaController : Controller
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -23,29 +24,37 @@ namespace Tarea3BDI.Controllers
         [HttpPost]
         public IActionResult ValidacionLogin(LoginModel loginModel)
         {
+
             string clientIPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
 
             (bool validacionResultado, int idUsuario) = datosUsuario.ValidacionLogin(loginModel.Pwd, loginModel.Tipo, loginModel.Username, clientIPAddress);
 
             if (validacionResultado == true && loginModel.Tipo == 1)
             {
-               
-                return RedirectToAction("listar", "Mantenedor", new {idUsuario = idUsuario}); 
+
+                return RedirectToAction("listar", "Mantenedor", new { idUsuario = idUsuario });
             }
+
             else
             {
                 if (validacionResultado == true && loginModel.Tipo == 2)
                 {
+
+                    // AQUI QUIERO PONER LLAMAR EL SP
+                    int idEmpleado = datosUsuario.ValidarEmpleado(loginModel.Pwd, loginModel.Username, clientIPAddress, idUsuario);
+
                     // La validación fue exitosa, redirige al usuario a la página deseada
-                    return RedirectToAction("Inicio", "UsuarioEmpleado", new {idUsuario = idUsuario});
+                    return RedirectToAction("Inicio", "UsuarioEmpleado", new { idUsuario = idUsuario, idEmpleado = idEmpleado });
                 }
                 else
                 {
                     // La validación falló, muestra un mensaje de error o redirige al usuario a una página de inicio de sesión
                     return View();
-                }               
+                }
+
             }
         }
+
     }
 }
 

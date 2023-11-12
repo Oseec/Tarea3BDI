@@ -6,16 +6,14 @@
 
 <div class="card">
     <div class="card-header">
-        15 Planillas Semanales Por semana
+        Últimas 15 Planillas Semanales Por semana
     </div>
     <div class="card-body">
-        <a asp-action="InsertarEmpleado" asp-controller="Mantenedor" class="btn btn-success"><i class="bi bi-plus-circle"></i> Crear Nuevo</a>
         <hr />
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Nombre Empleado</th>
-                    <p>Using ViewBag: @ViewBag.idUsuario</p>
                     <th>Salario Neto</th>
                     <th>Salario Bruto</th>
                     <th>Total deducciones</th>
@@ -29,17 +27,13 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.SalarioNeto</td>
+                        <td>@item.NombreEmpleado</td>
                         <td>@item.SalarioNeto</td>
                         <td>@item.SalarioBruto</td>
                         <td>@item.TotalDeducciones</td>
                         <td>@item.HorasOrdinarias</td>
                         <td>@item.HorasExtraNormales</td>
                         <td>@item.HorasExtraDobles</td>
-                        <td>
-                            <a asp-action="Editar" asp-controller="Mantenedor" class="btn btn-primary btn-sm" asp-route-Id="@item.Id">Editar</a>
-                            <a asp-action="Eliminar" asp-controller="Mantenedor" class="btn btn-danger btn-sm" asp-route-Id="@item.Id">Eliminar</a>
-                        </td>
                     </tr>
 
                 }

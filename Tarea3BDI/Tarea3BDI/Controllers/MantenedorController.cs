@@ -62,7 +62,7 @@ namespace Tarea3BDI.Controllers
         {
             ViewBag.idUsuario = idUsuario;
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
-            var rpta = datosEmpleado.Eliminar(Id, clientIPAddress, idUsuario);
+            var rpta = datosEmpleado.Eliminar(idUsuario, clientIPAddress, idUsuario);
             if(rpta)
                 return RedirectToAction("Listar", "Mantenedor");
             else 
