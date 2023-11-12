@@ -48,10 +48,10 @@ namespace Tarea3BDI.Controllers
         }
 
         
-        public IActionResult ELiminar(int Id, 
-            int idUsuario)
+        public IActionResult ELiminar(int Id, int idUsuario)
         {
             ViewBag.idUsuario = idUsuario;
+            ViewBag.Id = Id;
             
             return View();
         }
@@ -60,9 +60,9 @@ namespace Tarea3BDI.Controllers
         [HttpPost]
         public IActionResult ELiminar(int idUsuario)
         {
-            ViewBag.idUsuario = idUsuario;
+            ViewBag.Id = Id;
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
-            var rpta = datosEmpleado.Eliminar(idUsuario, clientIPAddress, idUsuario);
+            var rpta = datosEmpleado.Eliminar(Id, clientIPAddress, idUsuario);
             if(rpta)
                 return RedirectToAction("Listar", "Mantenedor");
             else 

@@ -13,15 +13,15 @@
     
 
       <form asp-action="Eliminar" asp-controller="Mantenedor" method="post">
-
-       @* <input asp-for="IdContacto" type="hidden" class="form-control"> *@
+            <p>Using ViewBag: @ViewBag.idUsuario</p>
+            <input asp-for ="Id" hidden value="@ViewBag.Id" class="form-control">
 
        <div class="alert alert-danger" role="alert">
           ¿Desea eliminar el contacto : @Html.DisplayTextFor(m => m.NombreEmpleado) ?
         </div>
 
             <button type="submit" asp-route-idUsuario="@ViewBag.idUsuario" class="btn btn-danger">Eliminar</button>
-      <a asp-action="Listar" asp-controller="Mantenedor" class="btn btn-warning">Volver a la lista</a>
+            <a asp-action="Listar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" class="btn btn-warning">Volver a la lista</a>
     </form>
 
 
