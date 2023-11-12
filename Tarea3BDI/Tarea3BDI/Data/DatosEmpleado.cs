@@ -29,6 +29,7 @@ namespace Tarea3BDI.Data
                     {
                         oLista.Add(new EmpleadoModel()
                         {
+                            
                             NombreEmpleado = dr["NombreEmpleado"].ToString(),
                             FechaDeNacimiento = Convert.ToDateTime(dr["FechaDeNacimiento"]),
                             IdTipoDocumento = Convert.ToInt32(dr["IdTipoDocumento"]),

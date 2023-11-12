@@ -4,6 +4,7 @@ namespace Tarea3BDI.Models
 {
     public class EmpleadoModel
     {
+        
 
         public int Id { get; set; }
 

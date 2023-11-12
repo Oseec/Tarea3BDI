@@ -42,22 +42,34 @@ namespace Tarea3BDI.Controllers
 
             var respuesta = datosEmpleado.InsertarEmpleado(empleadoModel, clientIPAddress, idUsuario);
             if(respuesta)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Listar", "Mantenedor", new {idUsuario = idUsuario});
             else
                 return View();
         }
 
+        
+        public IActionResult ELiminar(int Id, 
+            int idUsuario)
+        {
+            ViewBag.idUsuario = idUsuario;
+            
+            return View();
+        }
+        
+
+        [HttpPost]
         public IActionResult ELiminar(int idUsuario)
         {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult ELiminar(int Id, int idUsuario)
-        {
+            ViewBag.idUsuario = idUsuario;
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
-            return View();
+            var rpta = datosEmpleado.Eliminar(Id, clientIPAddress, idUsuario);
+            if(rpta)
+                return RedirectToAction("Listar", "Mantenedor");
+            else 
+                return View("Listar");
         }
 
+        /*
         public IActionResult Editar(int idUsuario)
         {
             return View();
@@ -68,17 +80,8 @@ namespace Tarea3BDI.Controllers
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
             return View();
         }
+        */
+
     }
 }
 
-/*
-public IActionResult ObtieneIdUsuario(LoginModel loginModel)
-{
-    string pwd = loginModel.Pwd;
-    int tipo = loginModel.Tipo;
-    string username = loginModel.Username;
-
-    int IdUsuario = datosEmpleado.ObtieneIdUsuario(username, pwd, tipo);
-    return View();
-}
-*/
