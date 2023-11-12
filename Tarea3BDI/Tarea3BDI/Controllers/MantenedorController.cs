@@ -47,26 +47,27 @@ namespace Tarea3BDI.Controllers
                 return View();
         }
 
-        
-        public IActionResult ELiminar(int Id, int idUsuario)
+        /*
+        public IActionResult ELiminar(string NombreEmpleado, int idUsuario)
         {
             ViewBag.idUsuario = idUsuario;
-            ViewBag.Id = Id;
-            
+            ViewBag.NombreEmpleado = NombreEmpleado;
+
             return View();
         }
+        */
         
-
-        [HttpPost]
-        public IActionResult ELiminar(int idUsuario)
+        //[HttpPost]
+        public IActionResult ELiminar(string NombreEmpleado, int idUsuario)
         {
-            ViewBag.Id = Id;
+            ViewBag.idUsuario = idUsuario;
+            ViewBag.NombreEmpleado = NombreEmpleado;
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
-            var rpta = datosEmpleado.Eliminar(Id, clientIPAddress, idUsuario);
-            if(rpta)
-                return RedirectToAction("Listar", "Mantenedor");
-            else 
-                return View("Listar");
+            var rpta = datosEmpleado.Eliminar(NombreEmpleado, clientIPAddress, idUsuario);
+            if (rpta)
+                return RedirectToAction("Listar", "Mantenedor", new { idUsuario = idUsuario });
+            else
+                return RedirectToAction("Listar", "Mantenedor", new { idUsuario = idUsuario });
         }
 
         /*
@@ -78,9 +79,11 @@ namespace Tarea3BDI.Controllers
         public IActionResult Editar(int idUsuario)
         {
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
-            return View();
+            return View();
         }
         */
+
+
 
     }
 }

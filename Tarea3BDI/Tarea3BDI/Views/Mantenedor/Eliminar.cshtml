@@ -21,7 +21,7 @@
         </div>
 
             <button type="submit" asp-route-idUsuario="@ViewBag.idUsuario" class="btn btn-danger">Eliminar</button>
-            <a asp-action="Listar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" class="btn btn-warning">Volver a la lista</a>
+            <a asp-action="Listar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-idUsuario="@ViewBag.NombreEmpleado" class="btn btn-warning">Volver a la lista</a>
     </form>
 
 

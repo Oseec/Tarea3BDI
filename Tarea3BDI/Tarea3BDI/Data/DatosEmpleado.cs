@@ -87,7 +87,7 @@ namespace Tarea3BDI.Data
             return rpta;
         }
 
-        public bool Eliminar(int Id, string postIP, int idUsuario)
+        public bool Eliminar(string NombreEmpleado, string postIP, int idUsuario)
         {
             try
             {
@@ -96,11 +96,11 @@ namespace Tarea3BDI.Data
                 using (var conexion = new SqlConnection(cn.getCadenaSQL()))
                 {
                     conexion.Open();
-                    using (var command = new SqlCommand("ActualizarEsActivo", conexion))
+                    using (var command = new SqlCommand("EliminarEsActivo", conexion))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Clear();
-                        command.Parameters.Add(new SqlParameter("@inId", Id));
+                        command.Parameters.Add(new SqlParameter("@inNombreEmpleado", NombreEmpleado));
                         command.Parameters.Add(new SqlParameter("@inPostIP", postIP));
                         command.Parameters.Add(new SqlParameter("@inIdUsuario", idUsuario));
 
@@ -114,9 +114,10 @@ namespace Tarea3BDI.Data
             catch (Exception e)
             {
                 // Manejar la excepción si es necesario
-                return (false); // Indicar que hubo un error
+                return (false); // Indicar que hubo un error
             }
         }
+
 
 
 

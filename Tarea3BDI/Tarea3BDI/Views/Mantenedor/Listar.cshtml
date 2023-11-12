@@ -41,10 +41,9 @@
                         <td>@item.NombrePuesto</td>
                         <td>@item.Usuario</td>
                         <td>@item.EsActivo</td>
-                        <td>@item.Id</td>
                         <td>
-                            <a asp-action="Editar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-Id="@item.Id" class="btn btn-primary btn-sm">Editar</a>
-                            <a asp-action="Eliminar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-Id="@item.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                            <a asp-action="Editar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-NombreEmpleado="@item.NombreEmpleado" class="btn btn-primary btn-sm">Editar</a>
+                            <a asp-action="Eliminar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-NombreEmpleado="@item.NombreEmpleado" class="btn btn-danger btn-sm">Eliminar</a>
                         </td>
                     </tr>
 
