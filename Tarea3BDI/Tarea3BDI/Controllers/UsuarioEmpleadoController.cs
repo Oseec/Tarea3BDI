@@ -8,7 +8,10 @@ namespace Tarea3BDI.Controllers
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         PlanillaSemanalXEmpleadoDatos DatosPlanillaSemanaXEmpleado = new PlanillaSemanalXEmpleadoDatos();
-
+        public UsuarioEmpleadoController(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
 
         public IActionResult Inicio(int idUsuario, int idEmpleado)
         {

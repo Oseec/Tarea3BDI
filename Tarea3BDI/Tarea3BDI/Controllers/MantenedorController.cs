@@ -98,7 +98,16 @@ namespace Tarea3BDI.Controllers
             else
                 return View();
         }
-        
+
+        public IActionResult Logout(int idUsuario)
+        {
+            ViewBag.idUsuario = idUsuario;
+            string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+            var rpta = datosEmpleado.Logout(clientIPAddress, idUsuario);
+            return View();
+        }
+
+
 
 
 

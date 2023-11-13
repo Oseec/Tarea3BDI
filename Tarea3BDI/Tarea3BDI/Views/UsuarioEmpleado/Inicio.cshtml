@@ -11,9 +11,11 @@
     <button type="submit" class="btn btn-primary">Consultar planilla semanal</button>
 </form>
 
+<br>
 
 <form asp-action="InicioConsultaPlaMensual" asp-controller="ConsultaPlaMensual" method="post">
     <input type="hidden" name="idUsuario" value="@ViewBag.IdUsuario" />
     <input type="hidden" name="idEmpleado" value="@ViewBag.IdEmpleado" />
     <button type="submit" class="btn btn-primary">Consultar planilla mensual</button>
 </form>
+

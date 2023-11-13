@@ -22,14 +22,15 @@
                 <input asp-for="FechaDeNacimiento" type="text" class="form-control">
             </div>
             <div>
-                <label class="form-label">--------</label>
-                <select class="form-select" aria-label="Default select example">
+                <label class="form-label" asp-for="IdTipoDocumento">Tipo de documento de identidad</label>
+                <select class="form-select" aria-label="Default select example" asp-for="IdTipoDocumento">
                     <option selected>Elija el nuevo tipo de documento de identificacion</option>
-                    <option value="7">Cedula Nacional</option>
+                    <option value="1">Cedula Nacional</option>
                     <option value="2">Cedula Residente</option>
-                    <option value="3">Cedula Juridica</option>
-                    <option value="4">Permiso de Trabajo</option>
-                    <option value="5">Cedula Extranjera</option>
+                    <option value="3">Pasaporte</option>
+                    <option value="4">Cedula Juridica</option>
+                    <option value="5">Permiso de Trabajo</option>
+                    <option value="6">Cedula Extranjera</option>
                 </select>
             </div>
             
@@ -38,19 +39,19 @@
                 <input asp-for="ValorTipoDocumento" type="text" class="form-control">
             </div>
             <div>
-                <label class="form-label">---------</label>
-                <select class="form-select" aria-label="Default select example">
+                <label class="form-label" asp-for="IdDepartamento">Departamento</label>
+                <select class="form-select" aria-label="Default select example" asp-for="IdDepartamento">
                     <option selected>Elija el nuevo Departamento</option>
                     <option value="1">Enlaminado</option>
-                    <option value="1">Laboratorio</option>
+                    <option value="2">Laboratorio</option>
                     <option value="3">Bodega de materiales</option>
                     <option value="4">Bodega de producto terminado</option>
                     <option value="5">Recursos Humanos</option>
                 </select>
             </div>
             <div>
-                <label class="form-label">---------</label>
-                <select class="form-select" aria-label="Default select example">
+                <label class="form-label" asp-for="IdPuesto">Puesto</label>
+                <select class="form-select" aria-label="Default select example" asp-for="IdPuesto">
                     <option selected>Elija el nuevo puesto</option>
                     <option value="1">Electricista</option>
                     <option value="2">Auxiliar de Laboratorio</option>

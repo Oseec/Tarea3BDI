@@ -11,6 +11,10 @@
     }
 </style>
 
+<a asp-action="Logout" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" class="btn btn-dark float-right"><i class="bi bi-plus-circle"></i> Logout</a>
+
+<div class="line-break"></div>
+
 @* <p>Using ViewBag: @ViewBag.idUsuario</p> *@
 <div class="card">
     <div class="card-header">
@@ -35,7 +39,6 @@
         
         <div class="line-break"></div>
 
-        <a asp-action="Inicio" asp-controller="UsuarioEmpleado" asp-route-idUsuario="@ViewBag.idUsuario" class="btn btn-success"><i class="bi bi-plus-circle"></i> Impersonar Empleado</a>
         <hr />
         <table class="table table-bordered">
             <thead>
@@ -64,9 +67,13 @@
                         <td>@item.NombrePuesto</td>
                         <td>@item.Usuario</td>
                         <td>@item.EsActivo</td>
+                        <td>
+                            <a asp-action="Inicio" asp-controller="UsuarioEmpleado" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-NombreEmpleado="@item.Usuario" class="btn btn-success"><i class="bi bi-plus-circle"></i> Impersonar Empleado</a>
+                        </td>
                         
                     </tr>
-
+                    
+                    
                 }
             </tbody>
         </table>

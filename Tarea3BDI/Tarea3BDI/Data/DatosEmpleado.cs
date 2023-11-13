@@ -1,6 +1,7 @@
 ﻿using Tarea3BDI.Models;
 using System.Data.SqlClient;
 using System.Data;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Tarea3BDI.Data
 {
@@ -112,7 +113,6 @@ namespace Tarea3BDI.Data
                     cmd.Parameters.AddWithValue("@inIdPuesto", empleadoModel.IdPuesto);
                     cmd.Parameters.AddWithValue("@inUsuario", empleadoModel.Usuario);
                     cmd.Parameters.AddWithValue("@inPassword", empleadoModel.Password);
-                    cmd.Parameters.AddWithValue("@inEsActivo", empleadoModel.EsActivo);
                     cmd.Parameters.AddWithValue("@inPostIP", clientIPAddress);
                     cmd.Parameters.AddWithValue("@inIdUsuario", IdUsuario);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -174,10 +174,10 @@ namespace Tarea3BDI.Data
                     SqlCommand cmd = new SqlCommand("EditarEmpleado", conexion);
                     cmd.Parameters.AddWithValue("@inNombreEmpleado", empleadoModel.NombreEmpleado);
                     cmd.Parameters.AddWithValue("@inFechaDeNacimiento", empleadoModel.FechaDeNacimiento);
-                    cmd.Parameters.AddWithValue("@inNombreTipoDocumento", empleadoModel.NombreTipoDocumento);
+                    cmd.Parameters.AddWithValue("@inIdTipoDocumento", empleadoModel.IdTipoDocumento);
                     cmd.Parameters.AddWithValue("@inValorTipoDocumento", empleadoModel.ValorTipoDocumento);
-                    cmd.Parameters.AddWithValue("@inNombreDepartamento", empleadoModel.NombreDepartamento);
-                    cmd.Parameters.AddWithValue("@inNombrePuesto", empleadoModel.NombrePuesto);
+                    cmd.Parameters.AddWithValue("@inIdDepartamento", empleadoModel.IdDepartamento);
+                    cmd.Parameters.AddWithValue("@inIdPuesto", empleadoModel.IdPuesto);
                     cmd.Parameters.AddWithValue("@inUsuario", empleadoModel.Usuario);
                     cmd.Parameters.AddWithValue("@inPostIP", clientIPAddress);
                     cmd.Parameters.AddWithValue("@inIdUsuario", IdUsuario);
@@ -195,8 +195,34 @@ namespace Tarea3BDI.Data
             return rpta;
         }
 
+        public bool Logout(string postIP, int idUsuario)
+        {
+            try
+            {
+                var cn = new Conexion();
 
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    using (var command = new SqlCommand("Logout", conexion))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Clear();
+                        command.Parameters.Add(new SqlParameter("@inPostIP", postIP));
+                        command.Parameters.Add(new SqlParameter("@inIdUsuario", idUsuario));
 
+                        int rowsAffected = command.ExecuteNonQuery();
 
+                        // Si rowsAffected es mayor a cero, significa que la operación fue exitosa
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                // Manejar la excepción si es necesario
+                return (false); // Indicar que hubo un error
+            }
+        }
     }
 }
