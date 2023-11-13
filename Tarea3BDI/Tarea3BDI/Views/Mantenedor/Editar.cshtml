@@ -1,0 +1,69 @@
+﻿@model EmpleadoModel
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Editar Empleado
+    </div>
+    <div class="card-body">
+
+        <form asp-action="InsertarEmpleado" asp-controller="Mantenedor" method="post">
+            <input asp-for="IdUsuario" hidden value="@ViewBag.idUsuario" class="form-control">
+            <div class="mb-3">
+                <label class="form-label">Escriba el nuevo Nombre del empleado</label>
+                <input asp-for="NombreEmpleado" type="text" class="form-control">
+                <p>Using ViewBag: @ViewBag.idUsuario</p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Escriba la nueva Fecha de Nacimiento</label>
+                <input asp-for="FechaDeNacimiento" type="text" class="form-control">
+            </div>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Elija el nuevo tipo de documento de identificacion</option>
+                <option value="1">Cedula Nacional</option>
+                <option value="2">Cedula Residente</option>
+                <option value="3">Cedula Juridica</option>
+                <option value="3">Permiso de Trabajo</option>
+                <option value="3">Cedula Extranjera</option>
+            </select>
+            <div class="mb-3">
+                <label class="form-label">Escriba el nuevo Valor documento de identidad</label>
+                <input asp-for="ValorTipoDocumento" type="text" class="form-control">
+            </div>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Elija el nuevo Departamento</option>
+                <option value="1">Enlaminado</option>
+                <option value="2">Laboratorio</option>
+                <option value="3">Bodega de materiales</option>
+                <option value="3">Bodega de producto terminado</option>
+                <option value="3">Recursos Humanos</option>
+            </select>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Elija el nuevo puesto</option>
+                <option value="1">Electricista</option>
+                <option value="2">Auxiliar de Laboratorio</option>
+                <option value="3">Operador de Maquina</option>
+                <option value="3">Contador</option>
+                <option value="3">Conserje</option>
+                <option value="3">Secretariado</option>
+            </select>
+            <div class="mb-3">
+                <label class="form-label">Escriba el nuevo Nombre de Usuario</label>
+                <input asp-for="Usuario" type="text" class="form-control">
+            </div>
+           
+            <div>
+                <button type="submit" class="btn btn-primary">Editar</button>
+                <a asp-action="Listar" asp-controller="Mantenedor" class="btn btn-warning">Volver a la lista</a>
+            </div>
+
+        </form>
+
+
+    </div>
+</div>
+
+
