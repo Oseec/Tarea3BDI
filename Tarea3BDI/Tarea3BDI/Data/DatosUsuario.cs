@@ -7,7 +7,7 @@ namespace Tarea3BDI.Data
     public class DatosUsuario
     {
 
-        public (bool, int) ValidacionLogin(/*int Id,*/ string Pwd, int Tipo, string Username, string postIP)
+        public (bool, int, int) ValidacionLogin(/*int Id,*/ string Pwd, string Username, string postIP)
         {
             try
             {
@@ -22,7 +22,7 @@ namespace Tarea3BDI.Data
                         command.Parameters.Clear();
                         //command.Parameters.Add(new SqlParameter("@inId", Id));
                         command.Parameters.Add(new SqlParameter("@inPwd", Pwd));
-                        command.Parameters.Add(new SqlParameter("@inTipo", Tipo));
+                        //command.Parameters.Add(new SqlParameter("@inTipo", Tipo));
                         command.Parameters.Add(new SqlParameter("@inUsername", Username));
                         command.Parameters.Add(new SqlParameter("@inPostIP", postIP));
 
@@ -36,19 +36,25 @@ namespace Tarea3BDI.Data
                         idUsuario.Direction = ParameterDirection.Output;
                         command.Parameters.Add(idUsuario);
 
+                        // Parámetro de salida para el Tipo
+                        var tipo = new SqlParameter("@outTipo", SqlDbType.Int);
+                        tipo.Direction = ParameterDirection.Output;
+                        command.Parameters.Add(tipo);
+
                         command.ExecuteNonQuery();
 
                         bool validacionResultado = (bool)resultado.Value;
                         int idUsuarioResultado = (idUsuario.Value != DBNull.Value) ? (int)idUsuario.Value : -1; // -1 si no se encontró un IdUsuario
+                        int tipoResultado = (tipo.Value != DBNull.Value) ? (int)tipo.Value : -1; // -1 si no se encontró un Tipo
 
-                        return (validacionResultado, idUsuarioResultado);
+                        return (validacionResultado, idUsuarioResultado, tipoResultado);
                     }
                 }
             }
             catch (Exception e)
             {  
                 // Manejar la excepción si es necesario
-                return (false, -1); // Indicar que hubo un error
+                return (false, -1, -1); // Indicar que hubo un error
             }
         }
 

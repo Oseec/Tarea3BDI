@@ -1,47 +1,23 @@
 ﻿@model List<EmpleadoModel>
 @{
-    ViewData["Title"] = "Listar";
+    ViewData["Title"] = "ListarPorNombre";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.idUsuario = (object)ViewBag.idUsuario;
 }
 
-<style>
-    .line-break {
-        margin-bottom: 10px; /* Ajusta según sea necesario */
-    }
-</style>
-
-@* <p>Using ViewBag: @ViewBag.idUsuario</p> *@
 <div class="card">
     <div class="card-header">
-        Lista Empleados
+        Lista Empleados Por Nombre
     </div>
-
-    
-
     <div class="card-body">
-        
-        <form asp-action="ListarPorNombre" asp-route-idUsuario="@ViewBag.idUsuario" asp-controller="Mantenedor">
-            <div class="mb-3">
-                <label class="form-label">Consultar Empleado Por Nombre</label>
-                <input type="text" class="form-control" name="NombreEmpleado">
-            </div>
-            <button type="submit" class="btn btn-primary">Consultar</button>
-        </form>
 
-        <br>
-
-        <a asp-action="InsertarEmpleado" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" class="btn btn-success"><i class="bi bi-plus-circle"></i> Crear Nuevo</a>
-        
-        <div class="line-break"></div>
-
-        <a asp-action="Inicio" asp-controller="UsuarioEmpleado" asp-route-idUsuario="@ViewBag.idUsuario" class="btn btn-success"><i class="bi bi-plus-circle"></i> Impersonar Empleado</a>
+        <p>Using ViewBag: @ViewBag.idUsuario</p>
+        @* <a asp-action="InsertarEmpleado" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" class="btn btn-success"><i class="bi bi-plus-circle"></i> Crear Nuevo</a> *@
         <hr />
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Nombre Empleado</th>
-                    
+
                     <th>Fecha De Nacimiento</th>
                     <th>Tipo Documento</th>
                     <th>Valor Tipo Documento</th>
@@ -64,15 +40,18 @@
                         <td>@item.NombrePuesto</td>
                         <td>@item.Usuario</td>
                         <td>@item.EsActivo</td>
-                        
+                        <td>
+                            <a asp-action="Editar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-NombreEmpleado="@item.NombreEmpleado" class="btn btn-primary btn-sm">Editar</a>
+                            <a asp-action="Eliminar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-NombreEmpleado="@item.NombreEmpleado" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
                     </tr>
 
                 }
             </tbody>
+            
         </table>
-        
+        <a asp-action="Listar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" class="btn btn-warning">Volver a la lista principal</a>
 
-        
     </div>
 </div>
 

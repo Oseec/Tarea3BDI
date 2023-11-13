@@ -27,9 +27,9 @@ namespace Tarea3BDI.Controllers
 
             string clientIPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
 
-            (bool validacionResultado, int idUsuario) = datosUsuario.ValidacionLogin(loginModel.Pwd, loginModel.Tipo, loginModel.Username, clientIPAddress);
+            (bool validacionResultado, int idUsuario, int Tipo) = datosUsuario.ValidacionLogin(loginModel.Pwd, loginModel.Username, clientIPAddress);
 
-            if (validacionResultado == true && loginModel.Tipo == 1)
+            if (validacionResultado == true && Tipo == 1)
             {
 
                 return RedirectToAction("listar", "Mantenedor", new { idUsuario = idUsuario });
@@ -37,7 +37,7 @@ namespace Tarea3BDI.Controllers
 
             else
             {
-                if (validacionResultado == true && loginModel.Tipo == 2)
+                if (validacionResultado == true && Tipo == 2)
                 {
 
                     // AQUI QUIERO PONER LLAMAR EL SP

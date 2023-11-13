@@ -29,6 +29,15 @@ namespace Tarea3BDI.Controllers
             return View(oLista);
         }
 
+        public IActionResult ListarPorNombre(string NombreEmpleado, int idUsuario)
+        {
+            string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+            var oLista = datosEmpleado.ListarPorNombre(NombreEmpleado, clientIPAddress, idUsuario);
+
+            ViewBag.idUsuario = idUsuario;
+            return View(oLista);
+        }
+
         public IActionResult InsertarEmpleado(int idUsuario)
         {
             ViewBag.idUsuario = idUsuario;
@@ -83,7 +92,11 @@ namespace Tarea3BDI.Controllers
         {
             ViewBag.idUsuario = idUsuario;
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
-            return View();
+            var rpta = datosEmpleado.Editar(empleadoModel, clientIPAddress, idUsuario);
+            if (rpta)
+                return RedirectToAction("Listar", "Mantenedor", new { idUsuario = idUsuario });
+            else
+                return View();
         }
         
 

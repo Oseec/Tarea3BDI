@@ -7,7 +7,6 @@ namespace Tarea3BDI.Models
         
 
         public int Id { get; set; }
-        public string NId { get; set; }
 
         public string NombreEmpleado { get; set; }
 

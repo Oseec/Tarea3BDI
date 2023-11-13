@@ -59,7 +59,7 @@
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Insertar</button>
-                <a asp-action="Listar" asp-controller="Mantenedor" class="btn btn-warning">Volver a la lista</a>
+                <a asp-action="Listar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" class="btn btn-warning">Volver a la lista</a>
             </div>
             
         </form>
