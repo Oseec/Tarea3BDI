@@ -62,19 +62,19 @@ namespace Tarea3BDI.Data
                 {
                     conexion.Open();
                     SqlCommand cmd = new SqlCommand("InsertarEmpleado", conexion);
-                    cmd.Parameters.AddWithValue("Nombre", empleadoModel.NombreEmpleado);
-                    cmd.Parameters.AddWithValue("Fecha de nacimiento", empleadoModel.FechaDeNacimiento);
-                    cmd.Parameters.AddWithValue("Tipo de Documento", empleadoModel.IdTipoDocumento);
-                    cmd.Parameters.AddWithValue("Valor de documento", empleadoModel.ValorTipoDocumento);
-                    cmd.Parameters.AddWithValue("Departamento", empleadoModel.IdDepartamento);
-                    cmd.Parameters.AddWithValue("Puesto", empleadoModel.IdPuesto);
-                    cmd.Parameters.AddWithValue("Usuario", empleadoModel.Usuario);
-                    cmd.Parameters.AddWithValue("Contraseña", empleadoModel.Password);
-                    cmd.Parameters.AddWithValue("EsActivo", empleadoModel.EsActivo);
+                    cmd.Parameters.AddWithValue("@inNombreEmpleado", empleadoModel.NombreEmpleado);
+                    cmd.Parameters.AddWithValue("@inFechaDeNacimiento", empleadoModel.FechaDeNacimiento);
+                    cmd.Parameters.AddWithValue("@inIdTipoDocumento", empleadoModel.IdTipoDocumento);
+                    cmd.Parameters.AddWithValue("@inValorTipoDocumento", empleadoModel.ValorTipoDocumento);
+                    cmd.Parameters.AddWithValue("@inIdDepartamento", empleadoModel.IdDepartamento);
+                    cmd.Parameters.AddWithValue("@inIdPuesto", empleadoModel.IdPuesto);
+                    cmd.Parameters.AddWithValue("@inUsuario", empleadoModel.Usuario);
+                    cmd.Parameters.AddWithValue("@inPassword", empleadoModel.Password);
+                    cmd.Parameters.AddWithValue("@inEsActivo", empleadoModel.EsActivo);
                     cmd.Parameters.AddWithValue("@inPostIP", clientIPAddress);
                     cmd.Parameters.AddWithValue("@inIdUsuario", IdUsuario);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.BeginExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
                 }
                 rpta = true;
             }
