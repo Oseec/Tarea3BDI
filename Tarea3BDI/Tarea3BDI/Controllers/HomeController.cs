@@ -50,3 +50,5 @@ namespace Tarea3BDI.Controllers
 
     }
 }
+35.9
+    47.9
