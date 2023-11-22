@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Data;
 using Tarea3BDI.Data;
 using Tarea3BDI.Models;
 
@@ -107,9 +107,26 @@ namespace Tarea3BDI.Controllers
             return View();
         }
 
+        public IActionResult Impersonar(string NombreEmpleado, int idUsuario)
+        {
+            ViewBag.idUsuario = idUsuario;
+            ViewBag.NombreEmpleado = NombreEmpleado;
 
+            return View();
+        }
 
-
+        [HttpPost]
+        public IActionResult Impersonar(int idUsuario, string NombreEmpleado)
+        {
+            ViewBag.idUsuario = idUsuario;
+            ViewBag.NombreEmpleado = NombreEmpleado;
+            //string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+            int IdEmpleado = datosEmpleado.Impersonar(idUsuario, NombreEmpleado);
+            if (IdEmpleado != -1)
+                return RedirectToAction("Inicio", "UsuarioEmpleado", new { idUsuario = idUsuario, IdEmpleado = IdEmpleado });
+            else
+                return View("Listar");
+        }
 
     }
 }

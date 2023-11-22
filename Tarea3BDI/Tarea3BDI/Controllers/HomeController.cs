@@ -33,6 +33,7 @@ namespace Tarea3BDI.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        
         public async Task<IActionResult> UploadCatalogo(ArchivoModel model)
         {
             if (model.Archivo != null && model.Archivo.Length > 0)
@@ -47,8 +48,6 @@ namespace Tarea3BDI.Controllers
             }
             return RedirectToAction("Index");
         }
-
+        
     }
 }
-35.9
-    47.9

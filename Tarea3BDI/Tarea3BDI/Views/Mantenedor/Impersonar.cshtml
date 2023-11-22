@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Impersonar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>Using ViewBag: @ViewBag.idUsuario</p>
+<p>Using ViewBag: @ViewBag.NombreEmpleado</p>
+
+<div>
+    <p>¿Estás seguro de que quieres Impersonar a @ViewBag.NombreEmpleado?</p>
+    <form id="confirmarImpersonarForm" method="post" action="@Url.Action("Impersonar", "Mantenedor", new { NombreEmpleado = ViewBag.NombreEmpleado, idUsuario = ViewBag.idUsuario })">
+        <button type="submit" class="btn btn-danger">Sí, Impersonar</button>
+        <a href="@Url.Action("Listar", "Mantenedor", new { idUsuario = ViewBag.idUsuario })" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#confirmarImpersonarForm").submit(function () {
+                return confirm("¿Estás seguro de que quieres hacer esto?");
+            });
+        });
+    </script>
+}

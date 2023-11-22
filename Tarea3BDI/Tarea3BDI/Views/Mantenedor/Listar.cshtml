@@ -21,7 +21,6 @@
         Lista Empleados
     </div>
 
-    
 
     <div class="card-body">
         
@@ -68,7 +67,7 @@
                         <td>@item.Usuario</td>
                         <td>@item.EsActivo</td>
                         <td>
-                            <a asp-action="Inicio" asp-controller="UsuarioEmpleado" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-NombreEmpleado="@item.Usuario" class="btn btn-success"><i class="bi bi-plus-circle"></i> Impersonar Empleado</a>
+                            <a asp-action="Impersonar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-NombreEmpleado="@item.NombreEmpleado" class="btn btn-success"><i class="bi bi-plus-circle"></i> Impersonar Empleado</a>
                         </td>
                         
                     </tr>

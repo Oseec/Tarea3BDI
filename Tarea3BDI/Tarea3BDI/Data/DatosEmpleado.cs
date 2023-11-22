@@ -224,5 +224,52 @@ namespace Tarea3BDI.Data
                 return (false); // Indicar que hubo un error
             }
         }
+
+        public int Impersonar(int idUsuario, string NombreEmpleado)
+        {
+            try
+            {
+                var cn = new Conexion();
+
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    using (var command = new SqlCommand("ObtieneIdEmpleado", conexion))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Clear();
+                        command.Parameters.Add(new SqlParameter("@inNombre", NombreEmpleado));
+                        command.Parameters.Add(new SqlParameter("@inIdUsuario", idUsuario));
+
+                        // Agregar parámetro de salida para capturar el IdEmpleado
+                        var outParameter = new SqlParameter("@outIdEmpleado", SqlDbType.Int);
+                        outParameter.Direction = ParameterDirection.Output;
+                        command.Parameters.Add(outParameter);
+
+                        // Ejecutar el stored procedure
+                        command.ExecuteNonQuery();
+
+                        // Verificar si se obtuvo un valor para el IdEmpleado
+                        if (outParameter.Value != DBNull.Value)
+                        {
+                            // Convertir el valor a entero y devolverlo
+                            return Convert.ToInt32(outParameter.Value);
+                        }
+                        else
+                        {
+                            // Devolver un valor predeterminado o manejar según sea necesario
+                            return -1; // Por ejemplo, -1 podría indicar que no se encontró el empleado
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                // Manejar la excepción si es necesario
+                // Logear el error, mostrar un mensaje, etc.
+                return -1; // Indicar que hubo un error
+            }
+        }
+
     }
 }
