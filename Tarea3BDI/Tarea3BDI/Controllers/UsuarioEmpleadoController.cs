@@ -19,5 +19,13 @@ namespace Tarea3BDI.Controllers
             ViewBag.IdEmpleado = idEmpleado;
             return View();
         }
+
+        public IActionResult InicioAdmin(int idUsuario, int idEmpleado)
+        {
+            ViewBag.IdUsuario = idUsuario;
+            ViewBag.IdEmpleado = idEmpleado;
+            return View();
+        }
+
     }
 }

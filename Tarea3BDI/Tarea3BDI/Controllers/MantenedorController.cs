@@ -123,7 +123,7 @@ namespace Tarea3BDI.Controllers
             //string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
             int IdEmpleado = datosEmpleado.Impersonar(idUsuario, NombreEmpleado);
             if (IdEmpleado != -1)
-                return RedirectToAction("Inicio", "UsuarioEmpleado", new { idUsuario = idUsuario, IdEmpleado = IdEmpleado });
+                return RedirectToAction("InicioAdmin", "UsuarioEmpleado", new { idUsuario = idUsuario, IdEmpleado = IdEmpleado });
             else
                 return View("Listar");
         }

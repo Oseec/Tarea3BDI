@@ -1,11 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "UsuarioEmpleado";
+    ViewData["Title"] = "InicioAdmin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @* <p>Using ViewBag: @ViewBag.idUsuario</p>
-<p>Using ViewBag: @ViewBag.IdEmpleado</p>
- *@
+<p>Using ViewBag: @ViewBag.IdEmpleado</p> *@
+
 <h1>UsuarioEmpleado</h1>
 
 <form asp-action="InicioConsultaPlaSemanal" asp-controller="ConsultaPlaSemanal" method="post">
@@ -20,5 +20,12 @@
     <input type="hidden" name="idUsuario" value="@ViewBag.IdUsuario" />
     <input type="hidden" name="idEmpleado" value="@ViewBag.IdEmpleado" />
     <button type="submit" class="btn btn-primary">Consultar planilla mensual</button>
+</form>
+
+<br>
+
+<form asp-action="Listar" asp-controller="Mantenedor">
+    <input type="hidden" name="idUsuario" value="@ViewBag.IdUsuario" />
+    <button type="submit" class="btn btn-dark">Regresar a interfaz administrador</button>
 </form>
 
