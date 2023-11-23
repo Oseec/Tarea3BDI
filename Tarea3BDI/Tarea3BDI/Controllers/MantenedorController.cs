@@ -79,20 +79,36 @@ namespace Tarea3BDI.Controllers
                 return RedirectToAction("Listar", "Mantenedor", new { idUsuario = idUsuario });
         }
 
-        
-        public IActionResult Editar(string NombreEmpleado, int idUsuario)
+        public IActionResult ConfirmarEditar(int idUsuario, string NombreEmpleado)
         {
             ViewBag.idUsuario = idUsuario;
             ViewBag.NombreEmpleado = NombreEmpleado;
 
-            return View();
+            int IdEmpleado = datosEmpleado.Impersonar(idUsuario, NombreEmpleado);
+            if (IdEmpleado != -1)
+                return RedirectToAction("Editar", "Mantenedor", new { idUsuario = idUsuario, IdEmpleado = IdEmpleado });
+            else
+                return View();
         }
-        [HttpPost]
-        public IActionResult Editar(EmpleadoModel empleadoModel, int idUsuario)
+
+        public IActionResult Editar(int IdEmpleado, int idUsuario)
         {
             ViewBag.idUsuario = idUsuario;
+            ViewBag.IdEmpleado = IdEmpleado;
+
+
+            return View();
+        }
+                
+
+        [HttpPost]
+        public IActionResult EditarFinal(EmpleadoModel empleadoModel, int IdEmpleado, int idUsuario)
+        {
+            ViewBag.idUsuario = idUsuario;
+            ViewBag.IdEmpleado = IdEmpleado;
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
-            var rpta = datosEmpleado.Editar(empleadoModel, clientIPAddress, idUsuario);
+
+            var rpta = datosEmpleado.Editar(empleadoModel, clientIPAddress, IdEmpleado, idUsuario);
             if (rpta)
                 return RedirectToAction("Listar", "Mantenedor", new { idUsuario = idUsuario });
             else

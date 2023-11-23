@@ -33,5 +33,7 @@ namespace Tarea3BDI.Models
 
         public int IdUsuario { get; set; }
 
+        public int IdEmpleado { get; set; }
+
     }
 }

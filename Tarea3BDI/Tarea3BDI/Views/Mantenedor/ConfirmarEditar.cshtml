@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "ConfirmarEditar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>Using ViewBag: @ViewBag.idUsuario</p>
+<p>Using ViewBag: @ViewBag.NombreEmpleado</p> 
+
+<div>
+    <p>¿Estás seguro de que quieres Impersonar a @ViewBag.NombreEmpleado?</p>
+    <form id="confirmarEditarForm" action="@Url.Action("Editar", "Mantenedor", new { IdEmpleado = ViewBag.IdEmpleado, idUsuario = ViewBag.idUsuario })">
+        <button type="submit" class="btn btn-danger">Sí, Editar</button>
+        <a href="@Url.Action("Listar", "Mantenedor", new { idUsuario = ViewBag.idUsuario })" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#confirmarEditarForm").submit(function () {
+                return confirm("¿Estás seguro de que quieres hacer esto?");
+            });
+        });
+    </script>
+}
+
+

@@ -3,7 +3,6 @@
     ViewData["Title"] = "ListarPorNombre";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-49.5
 <div class="card">
     <div class="card-header">
         Lista Empleados Por Nombre
@@ -41,7 +40,7 @@
                         <td>@item.Usuario</td>
                         <td>@item.EsActivo</td>
                         <td>
-                            <a asp-action="Editar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-NombreEmpleado="@item.NombreEmpleado" class="btn btn-primary btn-sm">Editar</a>
+                            <a asp-action="ConfirmarEditar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-NombreEmpleado="@item.NombreEmpleado" class="btn btn-primary btn-sm">Editar</a>
                             <a asp-action="Eliminar" asp-controller="Mantenedor" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-NombreEmpleado="@item.NombreEmpleado" class="btn btn-danger btn-sm">Eliminar</a>
                         </td>
                     </tr>

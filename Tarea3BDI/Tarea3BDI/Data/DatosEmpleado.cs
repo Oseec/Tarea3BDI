@@ -160,7 +160,7 @@ namespace Tarea3BDI.Data
             }
         }
 
-        public bool Editar(EmpleadoModel empleadoModel, string clientIPAddress, int IdUsuario)
+        public bool Editar(EmpleadoModel empleadoModel, string clientIPAddress, int Id, int IdUsuario)
         {
             bool rpta;
 
@@ -172,6 +172,7 @@ namespace Tarea3BDI.Data
                 {
                     conexion.Open();
                     SqlCommand cmd = new SqlCommand("EditarEmpleado", conexion);
+                    cmd.Parameters.AddWithValue("@inIdEmpleado", Id);
                     cmd.Parameters.AddWithValue("@inNombreEmpleado", empleadoModel.NombreEmpleado);
                     cmd.Parameters.AddWithValue("@inFechaDeNacimiento", empleadoModel.FechaDeNacimiento);
                     cmd.Parameters.AddWithValue("@inIdTipoDocumento", empleadoModel.IdTipoDocumento);
