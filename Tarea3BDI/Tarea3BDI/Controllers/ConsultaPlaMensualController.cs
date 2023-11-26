@@ -18,11 +18,22 @@ namespace Tarea3BDI.Controllers
             return View();
         }
 
-        public IActionResult InicioConsultaPlaMensual(int idUsuario, int idEmpleado)
+        public IActionResult InicioConsultaPlaMensual(int idUsuario, int IdEmpleado)
         {
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
 
-            var olist = DatosPlanillaMensualXEmpleado.Listar(clientIPAddress, idUsuario, idEmpleado);
+            var olist = DatosPlanillaMensualXEmpleado.Listar(clientIPAddress, idUsuario, IdEmpleado);
+            ViewBag.IdUsuario = idUsuario;
+            ViewBag.IdEmpleado = IdEmpleado;
+
+            return View(olist);
+        }
+
+        public IActionResult VerDetalleDeduccion(int idUsuario, int IdEmpleado)
+        {
+            ViewBag.IdUsuario = idUsuario;
+            ViewBag.IdEmpleado = IdEmpleado;
+            var olist = DatosPlanillaMensualXEmpleado.ObtenerDeduccionesPorEmpleado(idUsuario, IdEmpleado);
 
             return View(olist);
         }
