@@ -9,6 +9,8 @@
         Últimas 15 Planillas Semanales Por semana
     </div>
     <div class="card-body">
+        <p>Using ViewBag: @ViewBag.idUsuario</p>
+        <p>Using ViewBag: @ViewBag.IdEmpleado</p>
         <hr />
         <table class="table table-bordered">
             <thead>
@@ -30,7 +32,11 @@
                         <td>@item.NombreEmpleado</td>
                         <td>@item.SalarioNeto</td>
                         <td>@item.SalarioBruto</td>
-                        <td>@item.TotalDeducciones</td>
+                        <td>
+                            <a asp-action="VerDetalleDeduccionSemanal" asp-controller="ConsultaPlaSemanal" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-IdEmpleado="@ViewBag.IdEmpleado" class="btn btn-primary btn-sm">
+                                @item.TotalDeducciones
+                            </a>
+                        </td>
                         <td>@item.HorasOrdinarias</td>
                         <td>@item.HorasExtraNormales</td>
                         <td>@item.HorasExtraDobles</td>

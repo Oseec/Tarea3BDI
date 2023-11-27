@@ -11,7 +11,7 @@
     <div class="card-body">
         <p>Using ViewBag: @ViewBag.idUsuario</p>
         <p>Using ViewBag: @ViewBag.IdEmpleado</p>
-        <a asp-action="VerDetalleDeduccion" asp-controller="ConsultaPlaMensual" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-IdEmpleado="@ViewBag.IdEmpleado" class="btn btn-primary btn-sm">Ver Detalles Deduccion</a>
+       
         <hr />
         <table class="table table-bordered">
             <thead>
@@ -30,10 +30,11 @@
                         <td>@(i+1)</td>
                         <td>@Model[i].SalarioBruto</td>
                         <td>@Model[i].SalarioNeto</td>
-                        <td>@Model[i].TotalDeducciones</td>
-                        @* <td>
-                            <a asp-action="VerDetalleDeduccion" asp-controller="ConsultaPlaMensual" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-IdEmpleado="@ViewBag.IdEmpleado" class="btn btn-primary btn-sm">Ver Detalles Deduccion</a>
-                        </td> *@
+                        <td>
+                            <a asp-action="VerDetalleDeduccion" asp-controller="ConsultaPlaMensual" asp-route-idUsuario="@ViewBag.idUsuario" asp-route-IdEmpleado="@ViewBag.IdEmpleado" class="btn btn-primary btn-sm">
+                                @Model[i].TotalDeducciones
+                            </a>
+                        </td>
                     </tr>
 
                 }

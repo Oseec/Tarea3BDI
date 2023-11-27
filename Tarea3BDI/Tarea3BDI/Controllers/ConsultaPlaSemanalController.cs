@@ -18,11 +18,21 @@ namespace Tarea3BDI.Controllers
             return View();
         }
 
-        public IActionResult InicioConsultaPlaSemanal(int idUsuario, int idEmpleado)
+        public IActionResult InicioConsultaPlaSemanal(int idUsuario, int IdEmpleado)
         {
             string clientIPAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
 
-            var olist = DatosPlanillaSemanaXEmpleado.Listar(clientIPAddress, idUsuario, idEmpleado);
+            var olist = DatosPlanillaSemanaXEmpleado.Listar(clientIPAddress, idUsuario, IdEmpleado);
+            ViewBag.IdUsuario = idUsuario;
+            ViewBag.IdEmpleado = IdEmpleado;
+            return View(olist);
+        }
+
+        public IActionResult VerDetalleDeduccionSemanal(int idUsuario, int IdEmpleado)
+        {
+            ViewBag.IdUsuario = idUsuario;
+            ViewBag.IdEmpleado = IdEmpleado;
+            var olist = DatosPlanillaSemanaXEmpleado.ObtenerDeduccionesPorEmpleado(idUsuario, IdEmpleado);
 
             return View(olist);
         }

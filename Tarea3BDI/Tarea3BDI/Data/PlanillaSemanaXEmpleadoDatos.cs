@@ -6,11 +6,11 @@ namespace Tarea3BDI.Data
 {
     public class PlanillaSemanalXEmpleadoDatos
     {
-        public List<PlanillaSemanaXEmpleadoModel> Listar(string clientIPAddress, int idUsuario, int idEmpleado)
+        public List<PlanillaSemanaXEmpleadoModel> Listar(string clientIPAddress, int idUsuario, int IdEmpleado)
         {
             var oLista = new List<PlanillaSemanaXEmpleadoModel>();
 
-            Console.WriteLine($"Valor de IdEmpleado: {idEmpleado}");
+            Console.WriteLine($"Valor de IdEmpleado: {IdEmpleado}");
 
             var cn = new Conexion();
 
@@ -23,7 +23,7 @@ namespace Tarea3BDI.Data
 
                 cmd.Parameters.AddWithValue("@inPostIP", clientIPAddress);
                 cmd.Parameters.AddWithValue("@inIdUsuario", idUsuario);
-                cmd.Parameters.AddWithValue("@inIdEmpleado", idEmpleado);
+                cmd.Parameters.AddWithValue("@inIdEmpleado", IdEmpleado);
 
                 using (var dr = cmd.ExecuteReader())
                 {
@@ -48,5 +48,42 @@ namespace Tarea3BDI.Data
             }
             return oLista;
         }
+
+        public List<DeduccionesEmpleado> ObtenerDeduccionesPorEmpleado(int idUsuario, int IdEmpleado)
+        {
+
+            var cn = new Conexion();
+
+            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                conexion.Open();
+                using (var command = new SqlCommand("ObtenerDeduccionesPorEmpleado", conexion))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@inIdEmpleado", IdEmpleado));
+                    command.Parameters.Add(new SqlParameter("@inIdUsuario", idUsuario));
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        List<DeduccionesEmpleado> deducciones = new List<DeduccionesEmpleado>();
+
+                        while (reader.Read())
+                        {
+                            DeduccionesEmpleado deduccion = new DeduccionesEmpleado
+                            {
+                                NombreDeduccion = reader["NombreDeduccion"].ToString(),
+                                Porcentaje = Convert.ToDecimal(reader["Porcentaje"]),
+                                MontoDeduccion = Convert.ToDecimal(reader["MontoDeduccion"])
+                            };
+
+                            deducciones.Add(deduccion);
+                        }
+
+                        return deducciones;
+                    }
+                }
+            }
+        }
+
     }
 }
